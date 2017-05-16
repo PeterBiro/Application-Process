@@ -1,7 +1,7 @@
 import psycopg2
 
 
-def free_querry(querry):
+def run_querry(querry):
     try:
         # setup connection string
         connect_str = "dbname='birop' user='birop' host='localhost' password='postgreSQL_birop'"
@@ -19,6 +19,7 @@ def free_querry(querry):
     except Exception as e:
         print("Uh oh, can't connect. Invalid dbname, user or password?")
         print(e)
+
 
 def main():
     pass
