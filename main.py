@@ -53,15 +53,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-"""
-
-6.) Jemima Foreman, an applicant called us, that her phone number changed to: 003670/223-7459
-Write an UPDATE query, that changes this data in the database for this applicant.
-Also, write a SELECT query, that checks the phone_number column of this applicant.
-Use both of her name parts in the conditions!
-
-7.) Arsenio, an applicant called us, that he and his friend applied to Codecool.
-They both want to cancel the process, because they got an investor for the site they run: mauriseu.net
-
-Write DELETE query to remove all the applicants, who applied with emails for this domain (e-mail address has this domain after the @ sign).
-"""

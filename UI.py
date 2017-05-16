@@ -62,11 +62,7 @@ def handle_menu(menu_items):
 
 
 def main():
-    headers = ["ID", "First Name", "Last Name", "Height"]
-    table = [["1", "John", "Smith", "183"], ["2", "Jane", "Doe", "172"]]
-    # show_table(table, headers)
-    handle_menu(headers)
-
+    pass
 
 if __name__ == '__main__':
     main()
