@@ -25,6 +25,14 @@ def main():
         elif choice == "3":
             querry = "SELECT first_name || ' ' || last_name AS full_name, phone_number FROM applicants WHERE first_name LIKE 'Carol%';"
             headers = ["Full Name", "Phone number"]
+        elif choice == "4":
+            querry = "SELECT first_name || ' ' || last_name AS full_name, phone_number FROM applicants WHERE email LIKE '%@adipiscingenimmi.edu';"
+            headers = ["Full Name", "Phone number"]
+        elif choice == "5":
+            querry = "INSERT INTO applicants (first_name, last_name, phone_number, email, application_code) VALUES ('Markus', 'Schaffarzyk', '003620/725-2666', 'djnovus@groovecoverage.com', 54823);"
+            data_manager.run_querry(querry)
+            querry = "SELECT * FROM applicants WHERE application_code=54823;"
+            headers = ["Id", "First name", "Last name", "Phone number", "E-mail", "Application code"]
         elif choice == "8":
             querry = UI.ask_input("What is your SQL querry to run? ")
             querry += ";"
