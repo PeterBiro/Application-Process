@@ -37,10 +37,28 @@ def show_table(table, headers):
         print(sep_line)
 
 
+def handle_menu(menu_items):
+    """
+    Show a menu with options, ans ask for choice.
+    Args:
+        @menu_items: list of strings
+    Return:
+        @choice: string
+    """
+    for number, option in enumerate(menu_items, start=1):
+        print("{} - {}".format(number, option))
+    print()
+    print("0 - EXIT")
+    print("-"*12)
+    choice = input("Your choice:")
+    return choice
+
+
 def main():
     headers = ["ID", "First Name", "Last Name", "Height"]
     table = [["1", "John", "Smith", "183"], ["2", "Jane", "Doe", "172"]]
-    show_table(table, headers)
+    # show_table(table, headers)
+    handle_menu(headers)
 
 
 if __name__ == '__main__':
