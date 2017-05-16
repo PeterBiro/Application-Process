@@ -1,7 +1,7 @@
 import psycopg2
 
 
-def run_querry(querry):
+def run_query(query):
     try:
         # setup connection string
         connect_str = "dbname='birop' user='birop' host='localhost' password='postgreSQL_birop'"
@@ -11,10 +11,10 @@ def run_querry(querry):
         conn.autocommit = True
         # create a psycopg2 cursor that can execute queries
         cursor = conn.cursor()
-        # run a querry
-        cursor.execute("""{}""".format(querry))
+        # run a query
+        cursor.execute("""{}""".format(query))
         # Fetch and print the result of the last execution
-        if querry.upper().startswith("SELECT"):
+        if query.upper().startswith("SELECT"):
             rows = cursor.fetchall()
         else:
             rows = "Done"
