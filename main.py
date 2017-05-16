@@ -17,10 +17,17 @@ def main():
     while choice != "0":
         choice = UI.handle_menu(menu_options)
         if choice == "1":
-            querry = "SELECT first_name, last_name FROM mentors"
+            querry = "SELECT first_name, last_name FROM mentors;"
             headers = ["First name", "Last name"]
+        elif choice == "2":
+            querry = "SELECT nick_name FROM mentors WHERE city='Miskolc';"
+            headers = ["Nick name"]
+        elif choice == "3":
+            querry = "SELECT first_name || ' ' || last_name AS full_name, phone_number FROM applicants WHERE first_name LIKE 'Carol%';"
+            headers = ["Full Name", "Phone number"]
         elif choice == "8":
             querry = UI.ask_input("What is your SQL querry to run? ")
+            querry += ";"
             headers = ["*" for _ in range(len(table[0]))]
         if choice in {"1", "2", "3", "4", "5", "6", "7", "8"}:
             table = data_manager.run_querry(querry)
