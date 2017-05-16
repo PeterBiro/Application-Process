@@ -1,3 +1,7 @@
+def ask_input(question):
+    return input(question)
+
+
 def get_max_col_width(table, headers):
     """
     Seeks for the longest column width.
@@ -7,12 +11,13 @@ def get_max_col_width(table, headers):
     Return:
         List of integers with the column widths
     """
+    MARGIN_IN_CELLS = 1
     col_width = [len(title) for title in headers]
     for row in table:
         for i in range(len(row)):
-            if len(row[i]) > col_width[i]:
-                col_width[i] = len(row[i])
-    col_width = [x + 2 for x in col_width]  # for 1 char margin inside in cells
+            if len(str(row[i])) > col_width[i]:
+                col_width[i] = len(str(row[i]))
+    col_width = [x + 2*MARGIN_IN_CELLS for x in col_width]
     return col_width
 
 
@@ -27,11 +32,13 @@ def show_table(table, headers):
     sep_line = "-" * (sum(col_width) + len(col_width) + 1)
     print(sep_line)
     for i, title in enumerate(headers):
-        print("|{:^{}}".format(title.upper(), col_width[i]), end="")
+        print("|{:^{}s}".format(title.upper(), col_width[i]), end="")
     print("|")
     print(sep_line)
     for row in table:
         for i, value in enumerate(row):
+            if value is None:
+                value = "NULL"
             print("|{:^{}}".format(value, col_width[i]), end="")
         print("|")
         print(sep_line)
