@@ -44,5 +44,20 @@ def all_school():
     header = ["first name", "last name", "school's name", "country"]
     return render_template("results.html", title=title, header=header, result=result)
 
+
+@app.route("/mentors-by-country")
+def mentors_by_country():
+    title = "Mentors by country"
+    query = """
+    SELECT schools.country AS country, COUNT(mentors.id)
+    FROM mentors
+    FULL OUTER JOIN schools ON mentors.city = schools.city
+    GROUP BY country
+    ORDER BY country;
+    """
+    result = data_manager.run_query(query)
+    header = ["country", "count"]
+    return render_template("results.html", title=title, header=header, result=result)
+
 if __name__ == '__main__':
     app.run(debug=True)
