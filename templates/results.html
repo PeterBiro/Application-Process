@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>{{title}} - Application Process</title>
+    </head>
+    <body>
+        <table id="table" class="table">
+            <tr id="header" class="header">
+                {% for item in header %}
+                    <th>{{item}}</th>
+                {% endfor %}
+            </tr>
+            {% for row in result %}
+                <tr class="row">
+                    {% for data in row %}
+                        <td>{{data}}</td>
+                    {% endfor%}
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

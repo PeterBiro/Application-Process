@@ -16,5 +16,19 @@ def menu():
     ]
     return render_template("index.html", menu_items=menu_items)
 
+
+@app.route("/mentors")
+def mentors():
+    title = "Mentors and schools page"
+    query = """
+    SELECT mentors.first_name, mentors.last_name, schools.name, schools.country
+    FROM mentors
+    LEFT JOIN schools ON mentors.city = schools.city
+    ORDER BY mentors.id;
+    """
+    result = data_manager.run_query(query)
+    header = ["first name", "last name", "school's name", "country"]
+    return render_template("results.html", title=title, header=header, result=result)
+
 if __name__ == '__main__':
     app.run(debug=True)

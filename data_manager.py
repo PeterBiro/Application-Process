@@ -16,11 +16,8 @@ def run_query(query):
         # run a query
         cursor.execute("""{}""".format(query))
         # Fetch and print the result of the last execution
-        if query.upper().startswith("SELECT"):
-            rows = cursor.fetchall()
-        else:
-            rows = "Done"
-        return rows
+        
+        return cursor.fetchall()
     except Exception as e:
         print("Uh oh, can't connect. Invalid dbname, user or password?")
         print(e)
