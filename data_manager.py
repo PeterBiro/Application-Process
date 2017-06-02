@@ -1,10 +1,12 @@
 import psycopg2
+import private_settings
 
 
 def run_query(query):
+    dbname, user, host, password = private_settings.settings("database", "user", "host", "password")
     try:
         # setup connection string
-        connect_str = "dbname='birop' user='birop' host='localhost' password='postgreSQL_birop'"
+        connect_str = "dbname='{}' user='{}' host='{}' password='{}'".format(dbname, user, host, password)
         # use our connection values to establish a connection
         conn = psycopg2.connect(connect_str)
         # set autocommit option, to do every query when we call it
