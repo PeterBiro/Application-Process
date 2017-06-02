@@ -1,0 +1,10 @@
+<html>
+    <head>
+        <title>Application Process - Menu </title>
+    </head>
+    <body>
+        {% for menu_element in menu_items%}
+            <p><a href="{{menu_element['link']}}">{{ menu_element['name'] }}</a></p>
+        {% endfor %}
+    </body>
+</html>
