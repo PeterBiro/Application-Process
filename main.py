@@ -59,5 +59,19 @@ def mentors_by_country():
     header = ["country", "count"]
     return render_template("results.html", title=title, header=header, result=result)
 
+
+@app.route("/contacts")
+def contacts():
+    title = "Contacts"
+    query = """
+    SELECT  schools.name, mentors.first_name, mentors.last_name
+    FROM schools
+    LEFT JOIN mentors ON schools.contact_person = mentors.id
+    ORDER BY schools.name;
+    """
+    result = data_manager.run_query(query)
+    header = ["school", "first name", "last name"]
+    return render_template("results.html", title=title, header=header, result=result)
+
 if __name__ == '__main__':
     app.run(debug=True)
