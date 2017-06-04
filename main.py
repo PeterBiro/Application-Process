@@ -88,5 +88,20 @@ def applicants():
     header = ["first name", "application code", "creation date"]
     return render_template("results.html", title=title, header=header, result=result)
 
+
+@app.route("/applicants-and-mentors")
+def aapplicants_and_mentors():
+    title = "Applicants & mentors"
+    query = """
+    SELECT applicants.first_name, applicants.application_code, mentors.first_name, mentors.last_name
+    FROM applicants
+    LEFT JOIN applicants_mentors ON applicants.id = applicants_mentors.applicant_id
+    LEFT JOIN mentors ON mentors.id = applicants_mentors.mentor_id
+    ORDER BY applicants.id;
+    """
+    result = data_manager.run_query(query)
+    header = ["applicant's first name", "application code", "mentor's first name", "mentor's last name"]
+    return render_template("results.html", title=title, header=header, result=result)
+
 if __name__ == '__main__':
     app.run(debug=True)
