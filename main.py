@@ -73,5 +73,20 @@ def contacts():
     header = ["school", "first name", "last name"]
     return render_template("results.html", title=title, header=header, result=result)
 
+
+@app.route("/applicants")
+def applicants():
+    title = "Applicants"
+    query = """
+    SELECT applicants.first_name, applicants.application_code, applicants_mentors.creation_date
+    FROM applicants
+    JOIN applicants_mentors ON applicants.id = applicants_mentors.applicant_id
+    WHERE applicants_mentors.creation_date > '2016-01-01'
+    ORDER BY applicants_mentors.creation_date DESC;
+    """
+    result = data_manager.run_query(query)
+    header = ["first name", "application code", "creation date"]
+    return render_template("results.html", title=title, header=header, result=result)
+
 if __name__ == '__main__':
     app.run(debug=True)
