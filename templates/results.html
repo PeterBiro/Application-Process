@@ -1,19 +1,20 @@
 <html>
     <head>
         <title>{{title}} - Application Process</title>
+        <link rel="stylesheet" href="/static/stylesheet.css">
     </head>
     <body>
         <h1 id="title" class="title">
             {{title}}
         </h1>
         <table id="table" class="table">
-            <tr id="header" class="header">
+            <tr>
                 {% for item in header %}
                     <th>{{item}}</th>
                 {% endfor %}
             </tr>
             {% for row in result %}
-                <tr class="row">
+                <tr>
                     {% for data in row %}
                         <td>{{data}}</td>
                     {% endfor%}
